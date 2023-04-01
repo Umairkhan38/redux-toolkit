@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {increment, decrement} from './slices/amountReducer.js'
+import {increment, decrement, fetchUserById} from './slices/amountReducer.js'
 
 const Shop = () => {
   const dispatch=useDispatch()
@@ -14,6 +14,7 @@ const Shop = () => {
     <button className='btn btn-success mx-2' onClick={()=>dispatch(increment())}  >+</button>
     <p className='fw-semibold fst-italic'>Update Your Balance</p>
     <button className='btn btn-danger mx-2' disabled={amount<=0} onClick={()=>dispatch(decrement())}>-</button>
+    <button className='btn btn-danger mx-2' onClick={()=>dispatch(fetchUserById(1))}>Get Amount by ID</button>
     </div>
     </>
   )

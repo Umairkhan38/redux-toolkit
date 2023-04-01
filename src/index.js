@@ -7,13 +7,17 @@ import { configureStore } from '@reduxjs/toolkit';
 import amountReducer from './slices/amountReducer';
 import ItemReducer from './slices/ItemReducer';
 import { Provider } from 'react-redux'
+import { adminApi } from './API/adminSlice';
 
  
 const store = configureStore({
   reducer: {
     amount:amountReducer,
-    item:ItemReducer
+    item:ItemReducer,
+    [adminApi.reducerPath] : adminApi.reducer
   },
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware().concat(adminApi.middleware),
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
